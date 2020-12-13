@@ -11,6 +11,22 @@ protocol DITarget {
     var field: DIField<Any>? { get }
 }
 
+extension DITarget {
+    func safeDependency<D>() -> D? {
+        field?.dependency as? D
+    }
+}
+
+protocol TypedDITarget: DITarget {
+    associatedtype Dependency
+}
+
+extension TypedDITarget {
+    var safeDependency: Dependency? {
+        safeDependency()
+    }
+}
+
 class DIField<D> {
     typealias DIListener = (D) -> Void
     let didInject: DIListener?
