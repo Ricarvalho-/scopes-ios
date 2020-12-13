@@ -13,6 +13,8 @@
 		BD6912B32585767F00AF09A7 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = BD6912B22585767F00AF09A7 /* FirebaseAuth */; };
 		BD6912B52585767F00AF09A7 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = BD6912B42585767F00AF09A7 /* FirebaseFirestore */; };
 		BD6912BC25857A3D00AF09A7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BD6912BB25857A3D00AF09A7 /* GoogleService-Info.plist */; };
+		BD6912DB2585ECA400AF09A7 /* SafeSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6912DA2585ECA400AF09A7 /* SafeSegue.swift */; };
+		BD6912E425860E2F00AF09A7 /* DIStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6912E325860E2F00AF09A7 /* DIStructure.swift */; };
 		BD79CCC1258565BC0086BBB7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD79CCC0258565BC0086BBB7 /* AppDelegate.swift */; };
 		BD79CCC3258565BC0086BBB7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD79CCC2258565BC0086BBB7 /* SceneDelegate.swift */; };
 		BD79CCC5258565BC0086BBB7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD79CCC4258565BC0086BBB7 /* ViewController.swift */; };
@@ -23,6 +25,8 @@
 
 /* Begin PBXFileReference section */
 		BD6912BB25857A3D00AF09A7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		BD6912DA2585ECA400AF09A7 /* SafeSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeSegue.swift; sourceTree = "<group>"; };
+		BD6912E325860E2F00AF09A7 /* DIStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIStructure.swift; sourceTree = "<group>"; };
 		BD79CCBD258565BC0086BBB7 /* Scopes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scopes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD79CCC0258565BC0086BBB7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BD79CCC2258565BC0086BBB7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +53,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BD6912D32585EAD900AF09A7 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				BD6912DA2585ECA400AF09A7 /* SafeSegue.swift */,
+				BD6912E325860E2F00AF09A7 /* DIStructure.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		BD79CCB4258565BC0086BBB7 = {
 			isa = PBXGroup;
 			children = (
@@ -76,6 +89,7 @@
 				BD79CCCB258565BD0086BBB7 /* LaunchScreen.storyboard */,
 				BD79CCCE258565BD0086BBB7 /* Info.plist */,
 				BD6912BB25857A3D00AF09A7 /* GoogleService-Info.plist */,
+				BD6912D32585EAD900AF09A7 /* Common */,
 			);
 			path = Scopes;
 			sourceTree = "<group>";
@@ -187,7 +201,9 @@
 			files = (
 				BD79CCC5258565BC0086BBB7 /* ViewController.swift in Sources */,
 				BD79CCC1258565BC0086BBB7 /* AppDelegate.swift in Sources */,
+				BD6912E425860E2F00AF09A7 /* DIStructure.swift in Sources */,
 				BD79CCC3258565BC0086BBB7 /* SceneDelegate.swift in Sources */,
+				BD6912DB2585ECA400AF09A7 /* SafeSegue.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
