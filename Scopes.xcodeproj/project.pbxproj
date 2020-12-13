@@ -21,6 +21,8 @@
 		BD79CCC8258565BC0086BBB7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD79CCC6258565BC0086BBB7 /* Main.storyboard */; };
 		BD79CCCA258565BD0086BBB7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD79CCC9258565BD0086BBB7 /* Assets.xcassets */; };
 		BD79CCCD258565BD0086BBB7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD79CCCB258565BD0086BBB7 /* LaunchScreen.storyboard */; };
+		BDB8E5DC2586C78900A7ADB3 /* DIDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB8E5DB2586C78900A7ADB3 /* DIDestination.swift */; };
+		BDB8E5DF2586C7CE00A7ADB3 /* DISegueCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB8E5DE2586C7CE00A7ADB3 /* DISegueCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +37,8 @@
 		BD79CCC9258565BD0086BBB7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BD79CCCC258565BD0086BBB7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BD79CCCE258565BD0086BBB7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BDB8E5DB2586C78900A7ADB3 /* DIDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIDestination.swift; sourceTree = "<group>"; };
+		BDB8E5DE2586C7CE00A7ADB3 /* DISegueCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DISegueCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,7 +61,9 @@
 			isa = PBXGroup;
 			children = (
 				BD6912DA2585ECA400AF09A7 /* SafeSegue.swift */,
+				BDB8E5DB2586C78900A7ADB3 /* DIDestination.swift */,
 				BD6912E325860E2F00AF09A7 /* DIStructure.swift */,
+				BDB8E5DE2586C7CE00A7ADB3 /* DISegueCoordinator.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -201,8 +207,10 @@
 			files = (
 				BD79CCC5258565BC0086BBB7 /* ViewController.swift in Sources */,
 				BD79CCC1258565BC0086BBB7 /* AppDelegate.swift in Sources */,
+				BDB8E5DC2586C78900A7ADB3 /* DIDestination.swift in Sources */,
 				BD6912E425860E2F00AF09A7 /* DIStructure.swift in Sources */,
 				BD79CCC3258565BC0086BBB7 /* SceneDelegate.swift in Sources */,
+				BDB8E5DF2586C7CE00A7ADB3 /* DISegueCoordinator.swift in Sources */,
 				BD6912DB2585ECA400AF09A7 /* SafeSegue.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

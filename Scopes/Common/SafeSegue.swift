@@ -5,59 +5,33 @@
 //  Created by Ricardo Carvalho on 13/12/20.
 //
 
-import UIKit
+import Foundation
 
-protocol IdentifiableSegue {
-    var identifier: String { get }
-}
-
-enum SafeSegue {}
-
-class DIDestination: IdentifiableSegue {
-    let identifier: String
-    let diContainer: DIContainer<Any>?
+struct SafeSegue {
+    let destination: DIDestination
     
-    init(_ identifier: String, _ dependency: Any? = nil) {
-        self.identifier = identifier
-        if let dependency = dependency {
-            diContainer = DIContainer(dependency)
-        } else {
-            diContainer = nil
-        }
+    init(_ destination: DIDestination) {
+        self.destination = destination
     }
 }
 
-protocol DISegueCoordinator {
-    func performSegue(withIdentifier identifier: String, sender: Any?)
-}
-
-extension DISegueCoordinator {
-    func navigate(to destination: DIDestination) {
-        performSegue(withIdentifier: destination.identifier, sender: destination)
-    }
-}
-
-extension UIViewController {
-    @objc dynamic private func swizzledPrepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destination = sender as? DIDestination,
-           let target = segue.destination as? DITarget,
-           let targetField = target.field {
-            destination.diContainer?.performInjection(into: targetField)
-        }
-        swizzledPrepare(for: segue, sender: sender)
+extension SafeSegue {
+    static func from(_ origin: SafeSegue.Origin) -> Self {
+        SafeSegue(origin.segue.destination)
     }
     
-    class func swizzlePrepareForSegueWithDI() {
-        guard
-            let originalMethod = class_getInstanceMethod(
-                UIViewController.self,
-                #selector(UIViewController.prepare(for:sender:))
-            ),
-            let swizzledMethod = class_getInstanceMethod(
-                UIViewController.self,
-                #selector(UIViewController.swizzledPrepare(for:sender:))
-            )
-        else { return }
-        method_exchangeImplementations(originalMethod, swizzledMethod)
+    struct Origin: CompositeSafeSegue {
+        let segue: SafeSegue
+    }
+}
+
+protocol CompositeSafeSegue: Any {
+    var segue: SafeSegue { get }
+    init(segue: SafeSegue)
+}
+
+extension CompositeSafeSegue {
+    init(_ segue: SafeSegue) {
+        self.init(segue: segue)
     }
 }
