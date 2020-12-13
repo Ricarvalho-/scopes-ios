@@ -12,18 +12,18 @@ protocol DISegueCoordinator {
 }
 
 extension DISegueCoordinator {
-    func navigate(_ safeSegue: SafeSegue) {
-        navigate(to: safeSegue.destination)
+    func navigate(_ structuredSegue: StructuredSafeDISegue) {
+        navigate(with: structuredSegue.segue)
     }
     
-    func navigate(to destination: DIDestination) {
-        performSegue(withIdentifier: destination.identifier, sender: destination)
+    func navigate(with safeSegue: SafeDISegue) {
+        performSegue(withIdentifier: safeSegue.identifier, sender: safeSegue)
     }
 }
 
 extension UIViewController: DISegueCoordinator {
     @objc dynamic private func swizzledPrepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destination = sender as? DIDestination,
+        if let destination = sender as? SafeDISegue,
            let target = segue.destination as? DITarget,
            let targetField = target.field {
             destination.diContainer?.performInjection(into: targetField)

@@ -1,5 +1,5 @@
 //
-//  DIDestination.swift
+//  SafeDISegue.swift
 //  Scopes
 //
 //  Created by Ricardo Carvalho on 13/12/20.
@@ -11,7 +11,7 @@ protocol IdentifiableSegue {
     var identifier: String { get }
 }
 
-class DIDestination: IdentifiableSegue {
+class SafeDISegue: IdentifiableSegue {
     let identifier: String
     let diContainer: DIContainer<Any>?
     
