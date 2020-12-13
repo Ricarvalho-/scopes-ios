@@ -13,16 +13,16 @@ protocol DITarget {
 
 class DIField<D> {
     typealias DIListener = (D) -> Void
-    let didInject: DIListener
+    let didInject: DIListener?
     var dependency: D? = nil
     
-    init(_ listener: @escaping DIListener) {
+    init(_ listener: DIListener? = nil) {
         didInject = listener
     }
     
     func inject(_ dependency: D) {
         self.dependency = dependency
-        didInject(dependency)
+        didInject?(dependency)
     }
 }
 
