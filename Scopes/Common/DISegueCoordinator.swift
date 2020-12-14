@@ -46,7 +46,7 @@ extension UIViewController: DISegueCoordinator {
         swizzledPrepare(for: segue, sender: sender)
     }
     
-    class func swizzlePrepareForSegueWithDI() {
+    fileprivate class func swizzlePrepareForSegueWithDI() {
         guard
             let originalMethod = class_getInstanceMethod(
                 UIViewController.self,
@@ -58,5 +58,15 @@ extension UIViewController: DISegueCoordinator {
             )
         else { return }
         method_exchangeImplementations(originalMethod, swizzledMethod)
+    }
+}
+
+enum DIEnvironment {
+    private static var enabled = false
+    
+    static func enable() {
+        guard !enabled else { return }
+        enabled = true
+        UIViewController.swizzlePrepareForSegueWithDI()
     }
 }
