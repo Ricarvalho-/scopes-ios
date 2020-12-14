@@ -24,9 +24,8 @@ extension DISegueCoordinator {
 extension UIViewController: DISegueCoordinator {
     @objc dynamic private func swizzledPrepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = sender as? SafeDISegue,
-           let target = segue.destination as? DITarget,
-           let targetField = target.field {
-            destination.diContainer?.performInjection(into: targetField)
+           let target = segue.destination as? DITarget {
+            destination.diContainer?.performInjection(into: target.field)
         }
         swizzledPrepare(for: segue, sender: sender)
     }

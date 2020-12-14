@@ -8,12 +8,12 @@
 import Foundation
 
 protocol DITarget {
-    var field: DIField<Any>? { get }
+    var field: DIField<Any> { get }
 }
 
 extension DITarget {
     func safeDependency<D>() -> D? {
-        field?.dependency as? D
+        field.dependency as? D
     }
 }
 
