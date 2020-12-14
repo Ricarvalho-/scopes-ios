@@ -17,11 +17,35 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="iSL-lA-aBS"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="N5w-d8-Bb2" firstAttribute="centerX" secondItem="OH3-hB-984" secondAttribute="centerX" id="cpa-nk-ncd"/>
+                            <constraint firstItem="N5w-d8-Bb2" firstAttribute="centerY" secondItem="OH3-hB-984" secondAttribute="centerY" id="xOG-6C-xiR"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <segue destination="NOA-w8-rc8" kind="presentation" identifier="startToLogin" modalPresentationStyle="fullScreen" id="eMK-J1-KB4"/>
+                        <segue destination="ipc-6x-5jT" kind="presentation" identifier="startToMain" modalPresentationStyle="fullScreen" id="gOS-rK-jJH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L27-xO-dUx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="104" y="91"/>
+        </scene>
+        <!--Login-->
+        <scene sceneID="fz4-eU-GZm">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y90-Cb-9eK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="Login" id="NOA-w8-rc8" sceneMemberID="viewController"/>
+            </objects>
+            <point key="canvasLocation" x="707" y="36"/>
+        </scene>
+        <!--Main-->
+        <scene sceneID="XfX-36-c4X">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="00t-3q-koY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="Main" id="ipc-6x-5jT" sceneMemberID="viewController"/>
+            </objects>
+            <point key="canvasLocation" x="704" y="153"/>
         </scene>
     </scenes>
     <resources>
