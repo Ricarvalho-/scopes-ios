@@ -11,6 +11,7 @@
 		BD11C78E2586D76200B985A4 /* GoalsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD11C78D2586D76200B985A4 /* GoalsViewController.swift */; };
 		BD11C7912586D77600B985A4 /* TasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD11C7902586D77600B985A4 /* TasksViewController.swift */; };
 		BD11C7942586D7BF00B985A4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD11C7932586D7BF00B985A4 /* LoginViewController.swift */; };
+		BD2B27EF2589CF3C00BDF001 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2B27EE2589CF3C00BDF001 /* Repository.swift */; };
 		BD6912AD2585767F00AF09A7 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = BD6912AC2585767F00AF09A7 /* FirebaseAnalytics */; };
 		BD6912AF2585767F00AF09A7 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = BD6912AE2585767F00AF09A7 /* FirebaseCrashlytics */; };
 		BD6912B12585767F00AF09A7 /* FirebaseFirestoreSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = BD6912B02585767F00AF09A7 /* FirebaseFirestoreSwift-Beta */; };
@@ -37,6 +38,7 @@
 		BD11C78D2586D76200B985A4 /* GoalsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsViewController.swift; sourceTree = "<group>"; };
 		BD11C7902586D77600B985A4 /* TasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewController.swift; sourceTree = "<group>"; };
 		BD11C7932586D7BF00B985A4 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		BD2B27EE2589CF3C00BDF001 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		BD6912BB25857A3D00AF09A7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BD6912C72585E09B00AF09A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Start.storyboard; sourceTree = "<group>"; };
 		BD6912CB2585E0B600AF09A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				BD2B27ED2589CED300BDF001 /* Navigation */,
+				BD2B27EE2589CF3C00BDF001 /* Repository.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -286,6 +289,7 @@
 			files = (
 				BD11C7942586D7BF00B985A4 /* LoginViewController.swift in Sources */,
 				BD11C78B2586D73000B985A4 /* ScopesViewController.swift in Sources */,
+				BD2B27EF2589CF3C00BDF001 /* Repository.swift in Sources */,
 				BD79CCC1258565BC0086BBB7 /* AppDelegate.swift in Sources */,
 				BD11C7912586D77600B985A4 /* TasksViewController.swift in Sources */,
 				BDB8E5DC2586C78900A7ADB3 /* SafeDISegue.swift in Sources */,
