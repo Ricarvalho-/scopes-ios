@@ -95,13 +95,21 @@
 			path = Tasks;
 			sourceTree = "<group>";
 		};
-		BD6912D32585EAD900AF09A7 /* Common */ = {
+		BD2B27ED2589CED300BDF001 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
 				BD6912DA2585ECA400AF09A7 /* StructuredSafeDISegue.swift */,
 				BDB8E5DB2586C78900A7ADB3 /* SafeDISegue.swift */,
 				BD6912E325860E2F00AF09A7 /* DIStructure.swift */,
 				BDB8E5DE2586C7CE00A7ADB3 /* DISegueCoordinator.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		BD6912D32585EAD900AF09A7 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				BD2B27ED2589CED300BDF001 /* Navigation */,
 			);
 			path = Common;
 			sourceTree = "<group>";
