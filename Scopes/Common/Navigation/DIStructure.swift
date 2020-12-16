@@ -29,7 +29,8 @@ extension TypedDITarget {
 
 class DIField<D> {
     typealias DIListener = (D) -> Void
-    let didInject: DIListener?
+    
+    private let didInject: DIListener?
     var dependency: D? = nil
     
     init(_ listener: DIListener? = nil) {
@@ -43,7 +44,7 @@ class DIField<D> {
 }
 
 struct DIContainer<D> {
-    let dependency: D?
+    private let dependency: D?
     
     init(_ dependency: D? = nil) {
         self.dependency = dependency
