@@ -11,6 +11,7 @@
 		BD11C78E2586D76200B985A4 /* GoalsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD11C78D2586D76200B985A4 /* GoalsViewController.swift */; };
 		BD11C7912586D77600B985A4 /* TasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD11C7902586D77600B985A4 /* TasksViewController.swift */; };
 		BD11C7942586D7BF00B985A4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD11C7932586D7BF00B985A4 /* LoginViewController.swift */; };
+		BD2B27E42589C8DC00BDF001 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BD2B27E32589C8DC00BDF001 /* Localizable.strings */; };
 		BD2B27E72589C9D800BDF001 /* ScopesDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2B27E62589C9D800BDF001 /* ScopesDestination.swift */; };
 		BD2B27EA2589C9EB00BDF001 /* GoalsDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2B27E92589C9EB00BDF001 /* GoalsDestination.swift */; };
 		BD2B27EF2589CF3C00BDF001 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2B27EE2589CF3C00BDF001 /* Repository.swift */; };
@@ -40,6 +41,7 @@
 		BD11C78D2586D76200B985A4 /* GoalsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsViewController.swift; sourceTree = "<group>"; };
 		BD11C7902586D77600B985A4 /* TasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewController.swift; sourceTree = "<group>"; };
 		BD11C7932586D7BF00B985A4 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		BD2B27E32589C8DC00BDF001 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		BD2B27E62589C9D800BDF001 /* ScopesDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScopesDestination.swift; sourceTree = "<group>"; };
 		BD2B27E92589C9EB00BDF001 /* GoalsDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsDestination.swift; sourceTree = "<group>"; };
 		BD2B27EE2589CF3C00BDF001 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 				BD79CCCB258565BD0086BBB7 /* LaunchScreen.storyboard */,
 				BD79CCCE258565BD0086BBB7 /* Info.plist */,
 				BD6912BB25857A3D00AF09A7 /* GoogleService-Info.plist */,
+				BD2B27E32589C8DC00BDF001 /* Localizable.strings */,
 				BD6912D32585EAD900AF09A7 /* Common */,
 				BD6912D52585EB1F00AF09A7 /* Start */,
 				BD6912D42585EAF600AF09A7 /* Login */,
@@ -257,6 +260,7 @@
 				BD79CCCD258565BD0086BBB7 /* LaunchScreen.storyboard in Resources */,
 				BD6912BC25857A3D00AF09A7 /* GoogleService-Info.plist in Resources */,
 				BD6912CC2585E0B600AF09A7 /* Login.storyboard in Resources */,
+				BD2B27E42589C8DC00BDF001 /* Localizable.strings in Resources */,
 				BD6912C82585E09B00AF09A7 /* Start.storyboard in Resources */,
 				BD79CCCA258565BD0086BBB7 /* Assets.xcassets in Resources */,
 				BD79CCC8258565BC0086BBB7 /* Main.storyboard in Resources */,

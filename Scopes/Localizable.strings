@@ -1,0 +1,17 @@
+/* 
+  Localizable.strings
+  Scopes
+
+  Created by Ricardo Carvalho on 16/12/20.
+  
+*/
+
+"To Do" = "To Do";
+"Doing" = "Doing";
+"Done" = "Done";
+
+"Begin" = "Begin";
+"Abort" = "Abort";
+
+"Finish" = "Finish";
+"Remake" = "Remake";
