@@ -22,7 +22,7 @@ extension StructuredSafeDISegue.Origin.StartDestination {
         Self(SafeDISegue("startToLogin"))
     }
 
-    static var main: Self {
+    static func main() -> Self {
         Self(SafeDISegue("startToMain"))
     }
 }

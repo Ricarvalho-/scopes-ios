@@ -31,6 +31,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Root View Controller" id="XPI-y4-lPh"/>
+                    <connections>
+                        <segue destination="mkv-q9-Zzg" kind="show" identifier="scopesToGoals" id="nYy-2C-pp8"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PD6-IP-a7q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -59,6 +62,9 @@
                             <outlet property="delegate" destination="mkv-q9-Zzg" id="eor-G2-wlb"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <segue destination="Pi5-QB-WSH" kind="show" identifier="goalsToTasks" id="rVg-5n-Y0S"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U8g-ar-fA8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
