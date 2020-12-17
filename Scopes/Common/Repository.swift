@@ -10,51 +10,63 @@ import Foundation
 typealias ValueResult<T> = Result<T, Error>
 typealias EmptyResult = Result<Void, Error>
 
-protocol Repository {
-    associatedtype Element
-    
-    func create(new element: Element,
-                completion: (ValueResult<Element>) -> Void)
-    
-    func obtain(first elements: Int,
-                after element: Element?,
-                completion: (ValueResult<[Element]>) -> Void)
-    
-    func update(_ element: Element, completion: (EmptyResult) -> Void)
-    
-    func delete(_ element: Element, completion: (EmptyResult) -> Void)
+struct IdentifiableItem<T, I: Hashable>: Identifiable {
+    let id: I
+    let item: T
 }
 
-struct AnyRepository<E>: Repository {
-    private let create: (E, (ValueResult<E>) -> Void) -> Void
-    private let obtain: (Int, E?, (ValueResult<[E]>) -> Void) -> Void
-    private let update: (E, (EmptyResult) -> Void) -> Void
-    private let delete: (E, (EmptyResult) -> Void) -> Void
+protocol Repository {
+    associatedtype Element
+    associatedtype Identifier: Hashable
+    typealias IdentifiableElement = IdentifiableItem<Element, Identifier>
     
-    init<R: Repository>(_ repository: R) where R.Element == E {
+    func create(new element: Element,
+                completion: (ValueResult<IdentifiableElement>) -> Void)
+    
+    func obtain(first elements: Int,
+                after element: IdentifiableElement?,
+                completion: (ValueResult<[IdentifiableElement]>) -> Void)
+    
+    func update(_ element: IdentifiableElement, completion: (EmptyResult) -> Void)
+    
+    func delete(_ element: IdentifiableElement, completion: (EmptyResult) -> Void)
+}
+
+struct AnyRepository<E, I: Hashable>: Repository {
+    typealias IdentifiableElement = IdentifiableItem<E, I>
+    
+    private let create: (E, (ValueResult<IdentifiableElement>) -> Void) -> Void
+    private let obtain: (Int, IdentifiableElement?, (ValueResult<[IdentifiableElement]>) -> Void) -> Void
+    private let update: (IdentifiableElement, (EmptyResult) -> Void) -> Void
+    private let delete: (IdentifiableElement, (EmptyResult) -> Void) -> Void
+    
+    init<R: Repository>(_ repository: R) where R.Element == E, R.Identifier == I {
         create = repository.create
         obtain = repository.obtain
         update = repository.update
         delete = repository.delete
     }
     
-    func create(new element: E, completion: (ValueResult<E>) -> Void) {
+    func create(
+        new element: E,
+        completion: (ValueResult<IdentifiableElement>) -> Void
+    ) {
         create(element, completion)
     }
     
     func obtain(
         first elements: Int = 10,
-        after element: E? = nil,
-        completion: (ValueResult<[E]>) -> Void
+        after element: IdentifiableElement? = nil,
+        completion: (ValueResult<[IdentifiableElement]>) -> Void
     ) {
         obtain(elements, element, completion)
     }
     
-    func update(_ element: E, completion: (EmptyResult) -> Void) {
+    func update(_ element: IdentifiableElement, completion: (EmptyResult) -> Void) {
         update(element, completion)
     }
     
-    func delete(_ element: E, completion: (EmptyResult) -> Void) {
+    func delete(_ element: IdentifiableElement, completion: (EmptyResult) -> Void) {
         delete(element, completion)
     }
 }
