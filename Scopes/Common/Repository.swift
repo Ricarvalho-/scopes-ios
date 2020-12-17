@@ -21,24 +21,24 @@ protocol Repository {
     typealias IdentifiableElement = IdentifiableItem<Element>
     
     func create(new element: Element,
-                completion: (ValueResult<IdentifiableElement>) -> Void)
+                completion: @escaping (ValueResult<IdentifiableElement>) -> Void)
     
     func obtain(first elements: Int,
                 after element: IdentifiableElement?,
-                completion: (ValueResult<[IdentifiableElement]>) -> Void)
+                completion: @escaping (ValueResult<[IdentifiableElement]>) -> Void)
     
-    func update(_ element: IdentifiableElement, completion: (EmptyResult) -> Void)
+    func update(_ element: IdentifiableElement, completion: @escaping (EmptyResult) -> Void)
     
-    func delete(_ element: IdentifiableElement, completion: (EmptyResult) -> Void)
+    func delete(_ element: IdentifiableElement, completion: @escaping (EmptyResult) -> Void)
 }
 
 struct AnyRepository<E>: Repository {
     typealias IdentifiableElement = IdentifiableItem<E>
     
-    private let create: (E, (ValueResult<IdentifiableElement>) -> Void) -> Void
-    private let obtain: (Int, IdentifiableElement?, (ValueResult<[IdentifiableElement]>) -> Void) -> Void
-    private let update: (IdentifiableElement, (EmptyResult) -> Void) -> Void
-    private let delete: (IdentifiableElement, (EmptyResult) -> Void) -> Void
+    private let create: (E, @escaping (ValueResult<IdentifiableElement>) -> Void) -> Void
+    private let obtain: (Int, IdentifiableElement?, @escaping (ValueResult<[IdentifiableElement]>) -> Void) -> Void
+    private let update: (IdentifiableElement, @escaping (EmptyResult) -> Void) -> Void
+    private let delete: (IdentifiableElement, @escaping (EmptyResult) -> Void) -> Void
     
     init<R: Repository>(_ repository: R) where R.Element == E {
         create = repository.create
@@ -49,7 +49,7 @@ struct AnyRepository<E>: Repository {
     
     func create(
         new element: E,
-        completion: (ValueResult<IdentifiableElement>) -> Void
+        completion: @escaping (ValueResult<IdentifiableElement>) -> Void
     ) {
         create(element, completion)
     }
@@ -57,16 +57,16 @@ struct AnyRepository<E>: Repository {
     func obtain(
         first elements: Int = 10,
         after element: IdentifiableElement? = nil,
-        completion: (ValueResult<[IdentifiableElement]>) -> Void
+        completion: @escaping (ValueResult<[IdentifiableElement]>) -> Void
     ) {
         obtain(elements, element, completion)
     }
     
-    func update(_ element: IdentifiableElement, completion: (EmptyResult) -> Void) {
+    func update(_ element: IdentifiableElement, completion: @escaping (EmptyResult) -> Void) {
         update(element, completion)
     }
     
-    func delete(_ element: IdentifiableElement, completion: (EmptyResult) -> Void) {
+    func delete(_ element: IdentifiableElement, completion: @escaping (EmptyResult) -> Void) {
         delete(element, completion)
     }
 }
