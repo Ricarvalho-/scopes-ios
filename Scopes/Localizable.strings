@@ -6,12 +6,11 @@
   
 */
 
-"To Do" = "To Do";
-"Doing" = "Doing";
-"Done" = "Done";
+"task.status.todo" = "To Do";
+"task.status.doing" = "Doing";
+"task.status.done" = "Done";
 
-"Begin" = "Begin";
-"Abort" = "Abort";
-
-"Finish" = "Finish";
-"Remake" = "Remake";
+"task.action.begin" = "Begin";
+"task.action.abort" = "Abort";
+"task.action.finish" = "Finish";
+"task.action.remake" = "Remake";
