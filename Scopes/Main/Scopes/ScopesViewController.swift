@@ -7,4 +7,12 @@
 
 import UIKit
 
-class ScopesViewController: UITableViewController {}
+protocol ScopeVO {
+    var title: String { get set }
+}
+
+class ScopesViewController: UITableViewController, TypedDITarget {
+    typealias Dependency = AnyRepository<ScopeVO>
+    
+    let field = DIField<Any>()
+}

@@ -7,4 +7,13 @@
 
 import UIKit
 
-class GoalsViewController: UITableViewController {}
+protocol GoalVO {
+    var title: String { get set }
+    var dueDate: Date { get set }
+}
+
+class GoalsViewController: UITableViewController, TypedDITarget {
+    typealias Dependency = AnyRepository<GoalVO>
+    
+    let field = DIField<Any>()
+}
