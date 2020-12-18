@@ -18,7 +18,7 @@ extension StructuredSafeDISegue.Origin {
 }
 
 extension StructuredSafeDISegue.Origin.GoalsDestination {
-    static func tasks() -> Self {
-        Self(SafeDISegue("goalsToTasks"))
+    static func tasks<T: TaskVO>(_ tasksRepository: AnyRepository<T>) -> Self {
+        Self(SafeDISegue("goalsToTasks", tasksRepository))
     }
 }
