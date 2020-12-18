@@ -32,7 +32,10 @@
 		BD79CCC8258565BC0086BBB7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD79CCC6258565BC0086BBB7 /* Main.storyboard */; };
 		BD79CCCA258565BD0086BBB7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD79CCC9258565BD0086BBB7 /* Assets.xcassets */; };
 		BD79CCCD258565BD0086BBB7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD79CCCB258565BD0086BBB7 /* LaunchScreen.storyboard */; };
+		BDB88F1E258B1A6A0054AC95 /* ScopesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB88F1D258B1A6A0054AC95 /* ScopesRepository.swift */; };
 		BDB88F21258C2D940054AC95 /* FirestoreRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB88F20258C2D930054AC95 /* FirestoreRepository.swift */; };
+		BDB88F24258C3EE60054AC95 /* GoalsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB88F23258C3EE60054AC95 /* GoalsRepository.swift */; };
+		BDB88F27258C3EF80054AC95 /* TasksRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB88F26258C3EF80054AC95 /* TasksRepository.swift */; };
 		BDB88F2A258C6D540054AC95 /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB88F29258C6D540054AC95 /* Localizable.swift */; };
 		BDB88F2D258C7EF10054AC95 /* CommandProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB88F2C258C7EF10054AC95 /* CommandProvider.swift */; };
 		BDB8E5DC2586C78900A7ADB3 /* SafeDISegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB8E5DB2586C78900A7ADB3 /* SafeDISegue.swift */; };
@@ -62,7 +65,10 @@
 		BD79CCC9258565BD0086BBB7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BD79CCCC258565BD0086BBB7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BD79CCCE258565BD0086BBB7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BDB88F1D258B1A6A0054AC95 /* ScopesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScopesRepository.swift; sourceTree = "<group>"; };
 		BDB88F20258C2D930054AC95 /* FirestoreRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreRepository.swift; sourceTree = "<group>"; };
+		BDB88F23258C3EE60054AC95 /* GoalsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsRepository.swift; sourceTree = "<group>"; };
+		BDB88F26258C3EF80054AC95 /* TasksRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksRepository.swift; sourceTree = "<group>"; };
 		BDB88F29258C6D540054AC95 /* Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
 		BDB88F2C258C7EF10054AC95 /* CommandProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandProvider.swift; sourceTree = "<group>"; };
 		BDB8E5DB2586C78900A7ADB3 /* SafeDISegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeDISegue.swift; sourceTree = "<group>"; };
@@ -90,6 +96,7 @@
 			children = (
 				BD2B27E62589C9D800BDF001 /* ScopesDestination.swift */,
 				BD11C78A2586D73000B985A4 /* ScopesViewController.swift */,
+				BDB88F1D258B1A6A0054AC95 /* ScopesRepository.swift */,
 			);
 			path = Scopes;
 			sourceTree = "<group>";
@@ -99,6 +106,7 @@
 			children = (
 				BD2B27E92589C9EB00BDF001 /* GoalsDestination.swift */,
 				BD11C78D2586D76200B985A4 /* GoalsViewController.swift */,
+				BDB88F23258C3EE60054AC95 /* GoalsRepository.swift */,
 			);
 			path = Goals;
 			sourceTree = "<group>";
@@ -107,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				BD11C7902586D77600B985A4 /* TasksViewController.swift */,
+				BDB88F26258C3EF80054AC95 /* TasksRepository.swift */,
 			);
 			path = Tasks;
 			sourceTree = "<group>";
@@ -322,7 +331,10 @@
 				BD79CCC3258565BC0086BBB7 /* SceneDelegate.swift in Sources */,
 				BDB8E5DF2586C7CE00A7ADB3 /* DISegueCoordinator.swift in Sources */,
 				BD6912DB2585ECA400AF09A7 /* StructuredSafeDISegue.swift in Sources */,
+				BDB88F24258C3EE60054AC95 /* GoalsRepository.swift in Sources */,
 				BD6912D12585E82A00AF09A7 /* StartViewController.swift in Sources */,
+				BDB88F27258C3EF80054AC95 /* TasksRepository.swift in Sources */,
+				BDB88F1E258B1A6A0054AC95 /* ScopesRepository.swift in Sources */,
 				BD11C78E2586D76200B985A4 /* GoalsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
