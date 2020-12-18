@@ -32,6 +32,7 @@
 		BD79CCC8258565BC0086BBB7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD79CCC6258565BC0086BBB7 /* Main.storyboard */; };
 		BD79CCCA258565BD0086BBB7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD79CCC9258565BD0086BBB7 /* Assets.xcassets */; };
 		BD79CCCD258565BD0086BBB7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD79CCCB258565BD0086BBB7 /* LaunchScreen.storyboard */; };
+		BDB88F21258C2D940054AC95 /* FirestoreRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB88F20258C2D930054AC95 /* FirestoreRepository.swift */; };
 		BDB8E5DC2586C78900A7ADB3 /* SafeDISegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB8E5DB2586C78900A7ADB3 /* SafeDISegue.swift */; };
 		BDB8E5DF2586C7CE00A7ADB3 /* DISegueCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB8E5DE2586C7CE00A7ADB3 /* DISegueCoordinator.swift */; };
 /* End PBXBuildFile section */
@@ -59,6 +60,7 @@
 		BD79CCC9258565BD0086BBB7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BD79CCCC258565BD0086BBB7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BD79CCCE258565BD0086BBB7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BDB88F20258C2D930054AC95 /* FirestoreRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreRepository.swift; sourceTree = "<group>"; };
 		BDB8E5DB2586C78900A7ADB3 /* SafeDISegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeDISegue.swift; sourceTree = "<group>"; };
 		BDB8E5DE2586C7CE00A7ADB3 /* DISegueCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DISegueCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -121,6 +123,7 @@
 			children = (
 				BD2B27ED2589CED300BDF001 /* Navigation */,
 				BD2B27EE2589CF3C00BDF001 /* Repository.swift */,
+				BDB88F20258C2D930054AC95 /* FirestoreRepository.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -298,6 +301,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD11C7942586D7BF00B985A4 /* LoginViewController.swift in Sources */,
+				BDB88F21258C2D940054AC95 /* FirestoreRepository.swift in Sources */,
 				BD11C78B2586D73000B985A4 /* ScopesViewController.swift in Sources */,
 				BD2B27EF2589CF3C00BDF001 /* Repository.swift in Sources */,
 				BD79CCC1258565BC0086BBB7 /* AppDelegate.swift in Sources */,
