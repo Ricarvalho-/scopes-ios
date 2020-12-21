@@ -8,7 +8,7 @@
 import UIKit
 
 class ScopesViewController: UITableViewController, TypedDITarget {
-    typealias Dependency = AnyRepository<Scope>
+    typealias Dependency = FutureRepository<Scope>
     
     let field = DIField<Any>()
 }

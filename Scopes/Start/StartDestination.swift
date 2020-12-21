@@ -23,6 +23,6 @@ extension StructuredSafeDISegue.Origin.StartDestination {
     }
 
     static func main(_ scopesRepository: AnyRepository<Scope>) -> Self {
-        Self(SafeDISegue("startToMain", scopesRepository))
+        Self(SafeDISegue("startToMain", FutureRepository(repository: scopesRepository)))
     }
 }

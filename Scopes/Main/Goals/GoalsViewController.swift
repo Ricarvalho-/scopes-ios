@@ -8,7 +8,7 @@
 import UIKit
 
 class GoalsViewController: UITableViewController, TypedDITarget {
-    typealias Dependency = AnyRepository<Goal>
+    typealias Dependency = FutureRepository<Goal>
     
     let field = DIField<Any>()
 }

@@ -8,7 +8,7 @@
 import UIKit
 
 class TasksViewController: UITableViewController, TypedDITarget {
-    typealias Dependency = AnyRepository<Task>
+    typealias Dependency = FutureRepository<Task>
     
     let field = DIField<Any>()
 }
