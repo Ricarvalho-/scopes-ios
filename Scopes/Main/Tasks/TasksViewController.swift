@@ -7,13 +7,8 @@
 
 import UIKit
 
-protocol TaskVO {
-    var title: String { get set }
-    var status: Localizable & CommandProvider { get set }
-}
-
 class TasksViewController: UITableViewController, TypedDITarget {
-    typealias Dependency = AnyRepository<TaskVO>
+    typealias Dependency = AnyRepository<Task>
     
     let field = DIField<Any>()
 }

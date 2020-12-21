@@ -18,23 +18,12 @@ struct FirestoreTasksRepository: FirestoreRepository {
     }
 }
 
-struct Task: Codable, TaskVO {
+struct Task: Codable {
     var title: String
-    var _status: Status
-    var status: CommandProvider & Localizable {
-        get { _status }
-        set {
-            guard let newValue = newValue as? Status else { return }
-            _status = newValue
-        }
-    }
+    var status: Status
     
     enum Status: Int, Codable {
         case toDo, doing, done
-    }
-    
-    enum CodingKeys: String, CodingKey {
-        case title, _status = "status"
     }
 }
 
@@ -67,7 +56,7 @@ extension Task.Status: CommandProvider {
         }
     }
     
-    struct Action: Command {
+    private struct Action: Command {
         fileprivate let kind: Kind
         var title: Localizable {
             switch kind {
