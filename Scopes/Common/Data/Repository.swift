@@ -10,14 +10,14 @@ import Foundation
 typealias ValueResult<T> = Result<T, Error>
 typealias EmptyResult = Result<Void, Error>
 
-struct IdentifiableItem<T>: Identifiable {
+struct IdentifiableItem<T: Hashable>: Identifiable, Hashable {
     let id: String
     let path: String
     let item: T
 }
 
 protocol Repository {
-    associatedtype Element
+    associatedtype Element: Hashable
     typealias IdentifiableElement = IdentifiableItem<Element>
     
     func create(new element: Element,
@@ -32,7 +32,7 @@ protocol Repository {
     func delete(_ element: IdentifiableElement, completion: @escaping (EmptyResult) -> Void)
 }
 
-struct AnyRepository<E>: Repository {
+struct AnyRepository<E: Hashable>: Repository {
     typealias IdentifiableElement = IdentifiableItem<E>
     
     private let create: (E, @escaping (ValueResult<IdentifiableElement>) -> Void) -> Void
@@ -71,7 +71,7 @@ struct AnyRepository<E>: Repository {
     }
 }
 
-struct FutureRepository<E> {
+struct FutureRepository<E: Hashable> {
     typealias IdentifiableElement = IdentifiableItem<E>
     let repository: AnyRepository<E>
     

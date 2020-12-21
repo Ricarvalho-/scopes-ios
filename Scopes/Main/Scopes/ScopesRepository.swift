@@ -17,6 +17,6 @@ struct FirestoreScopesRepository: FirestoreRepository {
     }
 }
 
-struct Scope: Codable {
+struct Scope: Codable, Hashable {
     var title: String
 }

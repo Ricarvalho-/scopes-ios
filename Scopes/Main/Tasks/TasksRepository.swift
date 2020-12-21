@@ -18,7 +18,7 @@ struct FirestoreTasksRepository: FirestoreRepository {
     }
 }
 
-struct Task: Codable {
+struct Task: Codable, Hashable {
     var title: String
     var status: Status
     

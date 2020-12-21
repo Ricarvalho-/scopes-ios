@@ -18,7 +18,7 @@ struct FirestoreGoalsRepository: FirestoreRepository {
     }
 }
 
-struct Goal: Codable {
+struct Goal: Codable, Hashable {
     var title: String
     private var dueDateTimestamp: Timestamp
     var dueDate: Date {
