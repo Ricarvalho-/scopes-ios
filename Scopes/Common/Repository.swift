@@ -70,3 +70,37 @@ struct AnyRepository<E>: Repository {
         delete(element, completion)
     }
 }
+
+struct FutureRepository<E> {
+    typealias IdentifiableElement = IdentifiableItem<E>
+    let repository: AnyRepository<E>
+    
+    func create(new element: E) -> Future<IdentifiableElement> {
+        let future = FutureResult<IdentifiableElement>()
+        repository.create(new: element, completion: future.resultHandler)
+        return future
+    }
+    
+    func obtain(
+        first elements: Int = 10,
+        after element: IdentifiableElement? = nil
+    ) -> Future<[IdentifiableElement]> {
+        let future = FutureResult<[IdentifiableElement]>()
+        repository.obtain(first: elements,
+                          after: element,
+                          completion: future.resultHandler)
+        return future
+    }
+    
+    func update(_ element: IdentifiableElement) -> Future<Void> {
+        let future = FutureResult<Void>()
+        repository.update(element, completion: future.resultHandler)
+        return future
+    }
+    
+    func delete(_ element: IdentifiableElement) -> Future<Void> {
+        let future = FutureResult<Void>()
+        repository.delete(element, completion: future.resultHandler)
+        return future
+    }
+}

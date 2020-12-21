@@ -38,6 +38,7 @@
 		BDB88F27258C3EF80054AC95 /* TasksRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB88F26258C3EF80054AC95 /* TasksRepository.swift */; };
 		BDB88F2A258C6D540054AC95 /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB88F29258C6D540054AC95 /* Localizable.swift */; };
 		BDB88F2D258C7EF10054AC95 /* CommandProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB88F2C258C7EF10054AC95 /* CommandProvider.swift */; };
+		BDB88F30258FDE2E0054AC95 /* Future.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB88F2F258FDE2E0054AC95 /* Future.swift */; };
 		BDB8E5DC2586C78900A7ADB3 /* SafeDISegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB8E5DB2586C78900A7ADB3 /* SafeDISegue.swift */; };
 		BDB8E5DF2586C7CE00A7ADB3 /* DISegueCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB8E5DE2586C7CE00A7ADB3 /* DISegueCoordinator.swift */; };
 /* End PBXBuildFile section */
@@ -71,6 +72,7 @@
 		BDB88F26258C3EF80054AC95 /* TasksRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksRepository.swift; sourceTree = "<group>"; };
 		BDB88F29258C6D540054AC95 /* Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
 		BDB88F2C258C7EF10054AC95 /* CommandProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandProvider.swift; sourceTree = "<group>"; };
+		BDB88F2F258FDE2E0054AC95 /* Future.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Future.swift; sourceTree = "<group>"; };
 		BDB8E5DB2586C78900A7ADB3 /* SafeDISegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeDISegue.swift; sourceTree = "<group>"; };
 		BDB8E5DE2586C7CE00A7ADB3 /* DISegueCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DISegueCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -135,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				BD2B27ED2589CED300BDF001 /* Navigation */,
+				BDB88F2F258FDE2E0054AC95 /* Future.swift */,
 				BD2B27EE2589CF3C00BDF001 /* Repository.swift */,
 				BDB88F20258C2D930054AC95 /* FirestoreRepository.swift */,
 				BDB88F29258C6D540054AC95 /* Localizable.swift */,
@@ -323,6 +326,7 @@
 				BD2B27EF2589CF3C00BDF001 /* Repository.swift in Sources */,
 				BD79CCC1258565BC0086BBB7 /* AppDelegate.swift in Sources */,
 				BD11C7912586D77600B985A4 /* TasksViewController.swift in Sources */,
+				BDB88F30258FDE2E0054AC95 /* Future.swift in Sources */,
 				BDB8E5DC2586C78900A7ADB3 /* SafeDISegue.swift in Sources */,
 				BD6912E02585F56700AF09A7 /* StartDestination.swift in Sources */,
 				BD6912E425860E2F00AF09A7 /* DIStructure.swift in Sources */,
