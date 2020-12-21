@@ -137,9 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				BD2B27ED2589CED300BDF001 /* Navigation */,
-				BDB88F2F258FDE2E0054AC95 /* Future.swift */,
-				BD2B27EE2589CF3C00BDF001 /* Repository.swift */,
-				BDB88F20258C2D930054AC95 /* FirestoreRepository.swift */,
+				BDB88F342590561A0054AC95 /* Data */,
 				BDB88F29258C6D540054AC95 /* Localizable.swift */,
 				BDB88F2C258C7EF10054AC95 /* CommandProvider.swift */,
 			);
@@ -208,6 +206,16 @@
 				BD6912D92585EBE900AF09A7 /* Main */,
 			);
 			path = Scopes;
+			sourceTree = "<group>";
+		};
+		BDB88F342590561A0054AC95 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				BDB88F2F258FDE2E0054AC95 /* Future.swift */,
+				BD2B27EE2589CF3C00BDF001 /* Repository.swift */,
+				BDB88F20258C2D930054AC95 /* FirestoreRepository.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
