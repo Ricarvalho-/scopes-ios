@@ -20,12 +20,15 @@
 "task.action.remake" = "Remake";
 
 "general.title.create" = "Create";
-"general.title.rename" = "Rename";
+"general.title.edit" = "Edit";
 "general.title.title" = "Title";
 "general.title.error" = "Error";
+"general.title.delete" = "Delete?";
+
+"general.message.undoableaction" = "This action can't be undone";
 
 "general.action.cancel" = "Cancel";
 "general.action.ok" = "Ok";
 "general.action.retry" = "Retry";
-"general.action.rename" = "Rename";
+"general.action.edit" = "Edit";
 "general.action.delete" = "Delete";

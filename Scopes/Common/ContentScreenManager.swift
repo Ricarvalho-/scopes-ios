@@ -143,29 +143,42 @@ class ContentScreenManager<T: Hashable>: NSObject, UITableViewDelegate {
                 snapshot.deleteItems([oldOne])
                 self.dataSource.apply(snapshot, animatingDifferences: true)
             }.onFailure { [weak self] error in
-                self?.show(error: error.localizedDescription) { [weak self] in
+                self?.alert(error: error.localizedDescription) { [weak self] in
                     self?.update(oldItem: oldItem, with: newItem)
                 }
             }
     }
     
-    private func show(
+    private func alert(
         error message: String,
         retry handler: @escaping () -> Void
     ) {
-        let alert = UIAlertController(
-            title: Localized.General.Title.error.localized,
-            message: message,
-            preferredStyle: .alert
-        )
+        alert(title: Localized.General.Title.error.localized,
+              message: message,
+              actionTitle: Localized.General.Action.retry.localized,
+              actionHandler: handler)
+    }
+    
+    private func alert(
+        title: String,
+        message: String,
+        actionTitle: String = Localized.General.Action.ok.localized,
+        actionStyle: UIAlertAction.Style = .default,
+        onCancel: (() -> Void)? = nil,
+        actionHandler: (() -> Void)? = nil
+    ) {
+        let alert = UIAlertController(title: title,
+                                      message: message,
+                                      preferredStyle: .alert)
         
         [UIAlertAction(
             title: Localized.General.Action.cancel.localized,
-            style: .cancel),
+            style: .cancel,
+            handler: { _ in onCancel?() }),
          UIAlertAction(
-            title: Localized.General.Action.retry.localized,
-            style: .default,
-            handler: { _ in handler() })
+            title: actionTitle,
+            style: actionStyle,
+            handler: { _ in actionHandler?() })
         ].forEach() {
             alert.addAction($0)
         }
@@ -208,7 +221,7 @@ class ContentScreenManager<T: Hashable>: NSObject, UITableViewDelegate {
     ) {
         switch dataSource.itemIdentifier(for: indexPath) {
         case .error(let message):
-            show(error: message) { [weak self] in self?.fetchItems() }
+            alert(error: message) { [weak self] in self?.fetchItems() }
         default: break
         }
     }
