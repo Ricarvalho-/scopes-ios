@@ -14,3 +14,14 @@
 "task.action.abort" = "Abort";
 "task.action.finish" = "Finish";
 "task.action.remake" = "Remake";
+
+"general.title.create" = "Create";
+"general.title.rename" = "Rename";
+"general.title.title" = "Title";
+"general.title.error" = "Error";
+
+"general.action.cancel" = "Cancel";
+"general.action.ok" = "Ok";
+"general.action.retry" = "Retry";
+"general.action.rename" = "Rename";
+"general.action.delete" = "Delete";

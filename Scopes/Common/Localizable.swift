@@ -38,4 +38,21 @@ enum Localized {
             static var remake = Localizer.make("task.action.remake")
         }
     }
+    
+    enum General {
+        enum Title {
+            static var create = Localizer.make("general.title.create")
+            static var rename = Localizer.make("general.title.rename")
+            static var title = Localizer.make("general.title.title")
+            static var error = Localizer.make("general.title.error")
+        }
+        
+        enum Action {
+            static var cancel = Localizer.make("general.action.cancel")
+            static var ok = Localizer.make("general.action.ok")
+            static var retry = Localizer.make("general.action.retry")
+            static var rename = Localizer.make("general.action.rename")
+            static var delete = Localizer.make("general.action.delete")
+        }
+    }
 }
