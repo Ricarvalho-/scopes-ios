@@ -7,6 +7,9 @@
 
 import UIKit
 
+typealias FieldSetup = (_ field: UITextField,
+                        _ onUpdate: @escaping UIActionHandler) -> Void
+
 class ContentScreenManager<T: Hashable>: NSObject, UITableViewDelegate {
     var delegate: AnyContentScreenManagerDelegate<T>? = nil
     
@@ -182,6 +185,80 @@ class ContentScreenManager<T: Hashable>: NSObject, UITableViewDelegate {
         ].forEach() {
             alert.addAction($0)
         }
+        
+        delegate?.show(alert)
+    }
+    
+    func askItemTitle(
+        currentTitle: String? = nil,
+        completion: @escaping (_ title: String) -> Void
+    ) {
+        askItemDetails(
+            currentTitle: currentTitle
+        ) { (title, _: [NoFields : String?]) in
+            completion(title)
+        }
+    }
+    
+    private enum NoFields: Hashable {}
+    
+    func askItemDetails<F: Hashable>(
+        currentTitle: String? = nil,
+        additionalFields: [F : FieldSetup] = [:],
+        completion: @escaping (_ title: String,
+                               _ fieldValues: [F : String?]) -> Void
+    ) {
+        let alert = UIAlertController(
+            title: currentTitle == nil
+                ? Localized.General.Title.create.localized
+                : Localized.General.Title.edit.localized,
+            message: nil,
+            preferredStyle: .alert
+        )
+        
+        alert.addAction(UIAlertAction(
+                            title: Localized.General.Action.cancel.localized,
+                            style: .cancel))
+        
+        var titleField: UITextField?
+        var fields: [F : UITextField] = [:]
+        
+        let okAction = UIAlertAction(
+            title: Localized.General.Action.ok.localized,
+            style: .default,
+            handler: { _ in
+                let fieldValues = fields.mapValues { $0.text }
+                completion(titleField?.text ?? "", fieldValues)
+            })
+        alert.addAction(okAction)
+        
+        let updateOkActionEnabledState =
+            { [weak alert, weak okAction] (_: UIAction) -> Void in
+                okAction?.isEnabled = alert?.textFields?.allSatisfy {
+                    $0.text?.isEmpty == false
+                } == true
+            }
+        
+        alert.addTextField { field in
+            titleField = field
+            field.text = currentTitle
+            field.placeholder = Localized.General.Field.title.localized
+            field.autocapitalizationType = .sentences
+        }
+        
+        additionalFields.forEach { key, configuration in
+            alert.addTextField { field in
+                fields[key] = field
+                configuration(field, updateOkActionEnabledState)
+            }
+        }
+        
+        alert.textFields?.forEach { field in
+            field.addAction(UIAction(handler: updateOkActionEnabledState),
+                            for: .editingChanged)
+        }
+        
+        updateOkActionEnabledState(UIAction(handler: { _ in }))
         
         delegate?.show(alert)
     }
