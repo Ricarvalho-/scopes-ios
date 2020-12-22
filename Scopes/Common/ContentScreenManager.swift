@@ -228,6 +228,47 @@ class ContentScreenManager<T: Hashable>: NSObject, UITableViewDelegate {
     
     func tableView(
         _ tableView: UITableView,
+        trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath
+    ) -> UISwipeActionsConfiguration? {
+        switch dataSource.itemIdentifier(for: indexPath) {
+        case .item(let item):
+            return UISwipeActionsConfiguration(
+                actions: [UIContextualAction(
+                    style: .destructive,
+                    title: Localized.General.Action.delete.localized
+                ) { [weak self] _, _, completed in
+                    self?.alert(
+                        title: Localized.General.Title.delete.localized,
+                        message: Localized.General.Message.undoableAction.localized,
+                        actionTitle: Localized.General.Action.delete.localized,
+                        actionStyle: .destructive,
+                        onCancel: {
+                            completed(false)
+                        }
+                    ) { [weak self] in
+                        self?.repository.delete(item)
+                            .onSuccess { [weak self] in
+                                guard let self = self else { return }
+                                var snapshot = self.dataSource.snapshot()
+                                snapshot.deleteItems([item].map(Item.item))
+                                self.dataSource.apply(snapshot, animatingDifferences: true)
+                                completed(true)
+                            }.onFailure { [weak self] error in
+                                self?.alert(
+                                    title: Localized.General.Title.error.localized,
+                                    message: error.localizedDescription
+                                )
+                                completed(false)
+                            }
+                    }
+                }]
+            )
+        default: return nil
+        }
+    }
+    
+    func tableView(
+        _ tableView: UITableView,
         editingStyleForRowAt indexPath: IndexPath
     ) -> UITableViewCell.EditingStyle {
         .none
