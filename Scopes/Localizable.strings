@@ -14,11 +14,15 @@
 
 "general.message.undoableaction" = "This action can't be undone";
 
+"general.field.title" = "Title";
+
 "general.action.cancel" = "Cancel";
 "general.action.ok" = "Ok";
 "general.action.retry" = "Retry";
 "general.action.edit" = "Edit";
 "general.action.delete" = "Delete";
+
+"goal.field.duedate" = "Due date";
 
 "task.title.changestatus" = "Change task status";
 

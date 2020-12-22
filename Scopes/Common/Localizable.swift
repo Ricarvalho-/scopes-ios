@@ -37,12 +37,22 @@ enum Localized {
             static var undoableAction = Localizer.make("general.message.undoableaction")
         }
         
+        enum Field {
+            static var title = Localizer.make("general.field.title")
+        }
+        
         enum Action {
             static var cancel = Localizer.make("general.action.cancel")
             static var ok = Localizer.make("general.action.ok")
             static var retry = Localizer.make("general.action.retry")
             static var edit = Localizer.make("general.action.edit")
             static var delete = Localizer.make("general.action.delete")
+        }
+    }
+    
+    enum Goal {
+        enum Field {
+            static var dueDate = Localizer.make("goal.field.duedate")
         }
     }
     
