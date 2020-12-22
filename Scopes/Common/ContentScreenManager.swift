@@ -75,6 +75,7 @@ class ContentScreenManager<T: Hashable>: NSObject, UITableViewDelegate {
             }
             return cell
         }
+        dataSource.defaultRowAnimation = .fade
         
         super.init()
         tableView.delegate = self
@@ -124,6 +125,54 @@ class ContentScreenManager<T: Hashable>: NSObject, UITableViewDelegate {
         dataSource.apply(snapshot, animatingDifferences: true)
     }
     
+    func update(oldItem: IdentifiableItem<T>, with newItem: T) {
+        let updatedItem = IdentifiableItem(
+            id: oldItem.id,
+            path: oldItem.path,
+            item: newItem
+        )
+        repository.update(updatedItem)
+            .onSuccess { [weak self] in
+                guard let self = self else { return }
+                var snapshot = self.dataSource.snapshot()
+                let oldOne = Item.item(oldItem)
+                snapshot.insertItems(
+                    [updatedItem].map(Item.item),
+                    afterItem: oldOne
+                )
+                snapshot.deleteItems([oldOne])
+                self.dataSource.apply(snapshot, animatingDifferences: true)
+            }.onFailure { [weak self] error in
+                self?.show(error: error.localizedDescription) { [weak self] in
+                    self?.update(oldItem: oldItem, with: newItem)
+                }
+            }
+    }
+    
+    private func show(
+        error message: String,
+        retry handler: @escaping () -> Void
+    ) {
+        let alert = UIAlertController(
+            title: Localized.General.Title.error.localized,
+            message: message,
+            preferredStyle: .alert
+        )
+        
+        [UIAlertAction(
+            title: Localized.General.Action.cancel.localized,
+            style: .cancel),
+         UIAlertAction(
+            title: Localized.General.Action.retry.localized,
+            style: .default,
+            handler: { _ in handler() })
+        ].forEach() {
+            alert.addAction($0)
+        }
+        
+        delegate?.show(alert)
+    }
+    
     func tableView(
         _ tableView: UITableView,
         willDisplay cell: UITableViewCell,
@@ -159,24 +208,7 @@ class ContentScreenManager<T: Hashable>: NSObject, UITableViewDelegate {
     ) {
         switch dataSource.itemIdentifier(for: indexPath) {
         case .error(let message):
-            let alert = UIAlertController(
-                title: Localized.General.Title.error.localized,
-                message: message,
-                preferredStyle: .alert
-            )
-            
-            [UIAlertAction(
-                title: Localized.General.Action.cancel.localized,
-                style: .cancel),
-             UIAlertAction(
-                title: Localized.General.Action.retry.localized,
-                style: .default,
-                handler: { [weak self] _ in self?.fetchItems() })
-            ].forEach() {
-                alert.addAction($0)
-            }
-            
-            delegate?.show(alert)
+            show(error: message) { [weak self] in self?.fetchItems() }
         default: break
         }
     }

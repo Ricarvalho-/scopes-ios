@@ -25,6 +25,14 @@ private struct Localizer: Localizable {
 
 enum Localized {
     enum Task {
+        enum Title {
+            static var changeStatus = Localizer.make("task.title.changestatus")
+        }
+        
+        enum Message {
+            static var currentStatus = Localizer.make("task.message.currentstatus")
+        }
+        
         enum Status {
             static var toDo = Localizer.make("task.status.todo")
             static var doing = Localizer.make("task.status.doing")
