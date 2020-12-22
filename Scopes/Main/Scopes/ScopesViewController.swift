@@ -42,6 +42,6 @@ extension ScopesViewController: ContentScreenManagerDelegate {
     
     func didSelect(_ item: IdentifiableItem<Scope>) {
         let goalsRepository = FirestoreGoalsRepository(parent: item)
-        navigate(.from(.scopes(to: .goals(AnyRepository(goalsRepository)))))
+        navigate(.from(.scopes(to: .goals(with: AnyRepository(goalsRepository)))))
     }
 }

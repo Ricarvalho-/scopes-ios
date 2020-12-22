@@ -10,6 +10,6 @@ import UIKit
 class StartViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        navigate(.from(.start(to: .main(AnyRepository(FirestoreScopesRepository())))))
+        navigate(.from(.start(to: .main(with: AnyRepository(FirestoreScopesRepository())))))
     }
 }
