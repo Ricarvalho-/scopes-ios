@@ -38,18 +38,18 @@ extension FirestoreRepository {
     func obtain(
         first elements: Int,
         after element: IdentifiableElement?,
-        completion: @escaping (ValueResult<[IdentifiableElement]>) -> Void
+        completion: @escaping (ValueResult<([IdentifiableElement], Bool)>) -> Void
     ) {
         let query = collection.limit(to: elements)
         guard let element = element else {
-            perform(query, completion)
+            perform(query, elements, completion)
             return
         }
         
         database.document(element.path).getDocument(
             source: .cache,
             completion: handle(completion) { snapshot in
-                perform(query.start(afterDocument: snapshot), completion)
+                perform(query.start(afterDocument: snapshot), elements, completion)
             }
         )
     }
@@ -79,21 +79,14 @@ extension FirestoreRepository {
 extension FirestoreRepository {
     fileprivate func perform(
         _ query: Query,
-        _ completion: @escaping (ValueResult<[IdentifiableElement]>) -> Void
+        _ amount: Int,
+        _ completion: @escaping (ValueResult<([IdentifiableElement], Bool)>) -> Void
     ) {
-        query.getDocuments { querySnapshot, error in
-            if let error = error {
-                completion(.failure(error))
-            } else if let documents = querySnapshot?.documents {
-                let items = documents.compactMap(toIdentifiableElement(_:))
-                completion(.success(items))
-            }
-        }
-        
         query.getDocuments(
             completion: handle(completion) { querySnapshot in
                 let items = querySnapshot.documents.compactMap(toIdentifiableElement(_:))
-                completion(.success(items))
+                let canHaveMore = querySnapshot.count == amount
+                completion(.success((items, canHaveMore)))
             }
         )
     }

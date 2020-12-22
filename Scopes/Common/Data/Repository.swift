@@ -25,7 +25,7 @@ protocol Repository {
     
     func obtain(first elements: Int,
                 after element: IdentifiableElement?,
-                completion: @escaping (ValueResult<[IdentifiableElement]>) -> Void)
+                completion: @escaping (ValueResult<([IdentifiableElement], Bool)>) -> Void)
     
     func update(_ element: IdentifiableElement, completion: @escaping (EmptyResult) -> Void)
     
@@ -36,7 +36,7 @@ struct AnyRepository<E: Hashable>: Repository {
     typealias IdentifiableElement = IdentifiableItem<E>
     
     private let create: (E, @escaping (ValueResult<IdentifiableElement>) -> Void) -> Void
-    private let obtain: (Int, IdentifiableElement?, @escaping (ValueResult<[IdentifiableElement]>) -> Void) -> Void
+    private let obtain: (Int, IdentifiableElement?, @escaping (ValueResult<([IdentifiableElement], Bool)>) -> Void) -> Void
     private let update: (IdentifiableElement, @escaping (EmptyResult) -> Void) -> Void
     private let delete: (IdentifiableElement, @escaping (EmptyResult) -> Void) -> Void
     
@@ -55,9 +55,9 @@ struct AnyRepository<E: Hashable>: Repository {
     }
     
     func obtain(
-        first elements: Int = 10,
+        first elements: Int,
         after element: IdentifiableElement? = nil,
-        completion: @escaping (ValueResult<[IdentifiableElement]>) -> Void
+        completion: @escaping (ValueResult<([IdentifiableElement], Bool)>) -> Void
     ) {
         obtain(elements, element, completion)
     }
@@ -82,10 +82,10 @@ struct FutureRepository<E: Hashable> {
     }
     
     func obtain(
-        first elements: Int = 10,
+        first elements: Int,
         after element: IdentifiableElement? = nil
-    ) -> Future<[IdentifiableElement]> {
-        let future = FutureResult<[IdentifiableElement]>()
+    ) -> Future<([IdentifiableElement], Bool)> {
+        let future = FutureResult<([IdentifiableElement], Bool)>()
         repository.obtain(first: elements,
                           after: element,
                           completion: future.resultHandler)
