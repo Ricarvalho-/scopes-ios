@@ -33,6 +33,13 @@ class TasksViewController: UITableViewController, TypedDITarget {
     @IBAction func refreshContent() {
         contentManager?.refreshContent()
     }
+    
+    @IBAction func didTapAdd() {
+        contentManager?.askItemTitle { [weak self] title in
+            self?.contentManager?.create(new: Task(title: title,
+                                                   status: .toDo))
+        }
+    }
 }
 
 extension TasksViewController: ContentScreenManagerDelegate {

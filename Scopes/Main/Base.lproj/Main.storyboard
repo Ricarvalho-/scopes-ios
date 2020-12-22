@@ -64,7 +64,13 @@
                             <outlet property="delegate" destination="vw3-gM-3PU" id="aOE-wg-W07"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Scopes" id="XPI-y4-lPh"/>
+                    <navigationItem key="navigationItem" title="Scopes" id="XPI-y4-lPh">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="j3b-bk-tH3">
+                            <connections>
+                                <action selector="didTapAdd" destination="vw3-gM-3PU" id="foQ-Js-BSt"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="ycu-zI-9Xq">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -144,7 +150,13 @@
                             <outlet property="delegate" destination="mkv-q9-Zzg" id="eor-G2-wlb"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Goals" id="rdz-6Y-pYa"/>
+                    <navigationItem key="navigationItem" title="Goals" id="rdz-6Y-pYa">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="ozs-9C-0Sy">
+                            <connections>
+                                <action selector="didTapAdd" destination="mkv-q9-Zzg" id="gGV-uz-fhj"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="faf-5Y-ua1">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -224,7 +236,13 @@
                             <outlet property="delegate" destination="Pi5-QB-WSH" id="dsl-WA-KdD"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Tasks" id="Cdr-8c-vNc"/>
+                    <navigationItem key="navigationItem" title="Tasks" id="Cdr-8c-vNc">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="N53-zp-OYI">
+                            <connections>
+                                <action selector="didTapAdd" destination="Pi5-QB-WSH" id="SdS-fc-a2Z"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="xtP-XX-Gs5">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>

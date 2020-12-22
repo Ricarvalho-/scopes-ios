@@ -33,6 +33,12 @@ class ScopesViewController: UITableViewController, TypedDITarget {
     @IBAction func refreshContent() {
         contentManager?.refreshContent()
     }
+    
+    @IBAction func didTapAdd() {
+        contentManager?.askItemTitle { [weak self] title in
+            self?.contentManager?.create(new: Scope(title: title))
+        }
+    }
 }
 
 extension ScopesViewController: ContentScreenManagerDelegate {

@@ -39,6 +39,23 @@ class GoalsViewController: UITableViewController, TypedDITarget {
     @IBAction func refreshContent() {
         contentManager?.refreshContent()
     }
+    
+    @IBAction func didTapAdd() {
+        contentManager?.askItemDetails(
+            additionalFields: [Field.dueDate]
+        ) { [weak self] title, values in
+            guard let dueDateText = values[.dueDate] as? String,
+                  let dueDate = Self.dateFormatter.date(from: dueDateText)
+            else { return }
+            
+            self?.contentManager?.create(new: Goal(title: title,
+                                                   dueDate: dueDate))
+        }
+    }
+    
+    enum Field {
+        case dueDate
+    }
 }
 
 extension GoalsViewController: ContentScreenManagerDelegate {
@@ -50,5 +67,40 @@ extension GoalsViewController: ContentScreenManagerDelegate {
     func didSelect(_ item: IdentifiableItem<Goal>) {
         let tasksRepository = FirestoreTasksRepository(parent: item)
         navigate(.from(.goals(to: .tasks(with: AnyRepository(tasksRepository)))))
+    }
+}
+
+extension GoalsViewController.Field: FieldProvider {
+    var fieldSetup: FieldSetup {
+        switch self {
+        case .dueDate: return dueDateFieldSetup
+        }
+    }
+    
+    private func dueDateFieldSetup(
+        _ field: UITextField,
+        _ onUpdate: @escaping UIActionHandler
+    ) {
+        let datePicker = UIDatePicker()
+        datePicker.preferredDatePickerStyle = .inline
+        
+        let updateFieldTextToPickerDate =
+            { [weak field, weak datePicker] (action: UIAction) in
+                guard let date = datePicker?.date else { return }
+                field?.text = GoalsViewController.dateFormatter.string(from: date)
+                onUpdate(action)
+            }
+        
+        datePicker.addAction(
+            UIAction(handler: updateFieldTextToPickerDate),
+            for: .valueChanged
+        )
+        field.addAction(
+            UIAction(handler: updateFieldTextToPickerDate),
+            for: .allEditingEvents
+        )
+        
+        field.inputView = datePicker
+        field.placeholder = Localized.Goal.Field.dueDate.localized
     }
 }
