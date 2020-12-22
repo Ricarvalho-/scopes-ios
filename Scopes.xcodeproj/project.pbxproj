@@ -145,7 +145,6 @@
 				BDB88F29258C6D540054AC95 /* Localizable.swift */,
 				BDB88F2C258C7EF10054AC95 /* CommandProvider.swift */,
 				BDD04A2B25908F87004E9DC8 /* SwipeEnabledUITableViewDiffableDataSource.swift */,
-				BDD04A2E25914F01004E9DC8 /* ContentScreenManager.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -173,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				BD79CCC6258565BC0086BBB7 /* Main.storyboard */,
+				BDD04A2E25914F01004E9DC8 /* ContentScreenManager.swift */,
 				BD11C7872586D68F00B985A4 /* Scopes */,
 				BD11C7882586D6A000B985A4 /* Goals */,
 				BD11C7892586D6A800B985A4 /* Tasks */,
