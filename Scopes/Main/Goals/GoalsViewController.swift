@@ -13,10 +13,10 @@ class GoalsViewController: UITableViewController, TypedDITarget {
     let field = DIField<Any>()
     
     private var contentManager: ContentScreenManager<Goal>? = nil
-    private let dateFormatter: DateFormatter = {
+    private static let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.dateStyle = .full
-        formatter.timeStyle = .none
+        formatter.dateStyle = .short
+        formatter.timeStyle = .short
         return formatter
     }()
     
@@ -44,7 +44,7 @@ class GoalsViewController: UITableViewController, TypedDITarget {
 extension GoalsViewController: ContentScreenManagerDelegate {
     func update(cell: UITableViewCell, for item: Goal) {
         cell.textLabel?.text = item.title
-        cell.detailTextLabel?.text = dateFormatter.string(from: item.dueDate)
+        cell.detailTextLabel?.text = Self.dateFormatter.string(from: item.dueDate)
     }
     
     func didSelect(_ item: IdentifiableItem<Goal>) {
