@@ -15,8 +15,8 @@ class GoalsViewController: UITableViewController, TypedDITarget {
     private var contentManager: ContentScreenManager<Goal>? = nil
     private let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.dateStyle = .short
-        formatter.timeStyle = .short
+        formatter.dateStyle = .full
+        formatter.timeStyle = .none
         return formatter
     }()
     
