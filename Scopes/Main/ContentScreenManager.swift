@@ -191,10 +191,12 @@ class ContentScreenManager<T: Hashable>: NSObject, UITableViewDelegate {
     
     func askItemTitle(
         currentTitle: String? = nil,
+        onCancel: (() -> Void)? = nil,
         completion: @escaping (_ title: String) -> Void
     ) {
         askItemDetails(
-            currentTitle: currentTitle
+            currentTitle: currentTitle,
+            onCancel: onCancel
         ) { (title, _: [NoFields : String?]) in
             completion(title)
         }
@@ -205,6 +207,7 @@ class ContentScreenManager<T: Hashable>: NSObject, UITableViewDelegate {
     func askItemDetails<F: Hashable>(
         currentTitle: String? = nil,
         additionalFields: [F : FieldSetup] = [:],
+        onCancel: (() -> Void)? = nil,
         completion: @escaping (_ title: String,
                                _ fieldValues: [F : String?]) -> Void
     ) {
@@ -218,7 +221,8 @@ class ContentScreenManager<T: Hashable>: NSObject, UITableViewDelegate {
         
         alert.addAction(UIAlertAction(
                             title: Localized.General.Action.cancel.localized,
-                            style: .cancel))
+                            style: .cancel,
+                            handler: { _ in onCancel?() }))
         
         var titleField: UITextField?
         var fields: [F : UITextField] = [:]
