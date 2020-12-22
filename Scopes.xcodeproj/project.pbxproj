@@ -41,6 +41,7 @@
 		BDB88F30258FDE2E0054AC95 /* Future.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB88F2F258FDE2E0054AC95 /* Future.swift */; };
 		BDB8E5DC2586C78900A7ADB3 /* SafeDISegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB8E5DB2586C78900A7ADB3 /* SafeDISegue.swift */; };
 		BDB8E5DF2586C7CE00A7ADB3 /* DISegueCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB8E5DE2586C7CE00A7ADB3 /* DISegueCoordinator.swift */; };
+		BDD04A2C25908F88004E9DC8 /* SwipeEnabledUITableViewDiffableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD04A2B25908F87004E9DC8 /* SwipeEnabledUITableViewDiffableDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,6 +76,7 @@
 		BDB88F2F258FDE2E0054AC95 /* Future.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Future.swift; sourceTree = "<group>"; };
 		BDB8E5DB2586C78900A7ADB3 /* SafeDISegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeDISegue.swift; sourceTree = "<group>"; };
 		BDB8E5DE2586C7CE00A7ADB3 /* DISegueCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DISegueCoordinator.swift; sourceTree = "<group>"; };
+		BDD04A2B25908F87004E9DC8 /* SwipeEnabledUITableViewDiffableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeEnabledUITableViewDiffableDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +142,7 @@
 				BDB88F342590561A0054AC95 /* Data */,
 				BDB88F29258C6D540054AC95 /* Localizable.swift */,
 				BDB88F2C258C7EF10054AC95 /* CommandProvider.swift */,
+				BDD04A2B25908F87004E9DC8 /* SwipeEnabledUITableViewDiffableDataSource.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -341,6 +344,7 @@
 				BD2B27EA2589C9EB00BDF001 /* GoalsDestination.swift in Sources */,
 				BD2B27E72589C9D800BDF001 /* ScopesDestination.swift in Sources */,
 				BD79CCC3258565BC0086BBB7 /* SceneDelegate.swift in Sources */,
+				BDD04A2C25908F88004E9DC8 /* SwipeEnabledUITableViewDiffableDataSource.swift in Sources */,
 				BDB8E5DF2586C7CE00A7ADB3 /* DISegueCoordinator.swift in Sources */,
 				BD6912DB2585ECA400AF09A7 /* StructuredSafeDISegue.swift in Sources */,
 				BDB88F24258C3EE60054AC95 /* GoalsRepository.swift in Sources */,
