@@ -23,10 +23,12 @@ class Future<T> {
 }
 
 class FutureResult<T>: Future<T> {
-    lazy var resultHandler: (Result<T, Error>) -> Void = {
-        switch $0 {
-        case .success(let value): self.onSuccess.forEach { $0(value) }
-        case .failure(let error): self.onFailure.forEach { $0(error) }
+    var resultHandler: (Result<T, Error>) -> Void {
+        {
+            switch $0 {
+            case .success(let value): self.onSuccess.forEach { $0(value) }
+            case .failure(let error): self.onFailure.forEach { $0(error) }
+            }
         }
     }
 }
