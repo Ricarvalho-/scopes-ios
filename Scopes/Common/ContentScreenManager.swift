@@ -147,7 +147,7 @@ class ContentScreenManager<T: Hashable>: NSObject, UITableViewDelegate {
     ) {
         tableView.deselectRow(at: indexPath, animated: true)
         switch dataSource.itemIdentifier(for: indexPath) {
-        case .item(let item): delegate?.navigate(to: item)
+        case .item(let item): delegate?.didSelect(item)
         case .error(_): fetchItems()
         case .none: break
         }
@@ -203,20 +203,20 @@ protocol ContentScreenManagerDelegate: Alertable {
     associatedtype Item: Hashable
     
     func update(cell: UITableViewCell, for item: Item)
-    func navigate(to item: IdentifiableItem<Item>)
+    func didSelect(_ item: IdentifiableItem<Item>)
 }
 
 class AnyContentScreenManagerDelegate<T: Hashable>: ContentScreenManagerDelegate {
     private let update: (UITableViewCell, T) -> Void
-    private let navigate: (IdentifiableItem<T>) -> Void
+    private let didSelect: (IdentifiableItem<T>) -> Void
     private let show: (UIAlertController) -> Void
     
     init<D: ContentScreenManagerDelegate>(_ delegate: D) where D.Item == T {
         update = { [weak delegate] in
             delegate?.update(cell: $0, for: $1)
         }
-        navigate = { [weak delegate] in
-            delegate?.navigate(to: $0)
+        didSelect = { [weak delegate] in
+            delegate?.didSelect($0)
         }
         show = { [weak delegate] in
             delegate?.show($0)
@@ -227,8 +227,8 @@ class AnyContentScreenManagerDelegate<T: Hashable>: ContentScreenManagerDelegate
         update(cell, item)
     }
     
-    func navigate(to item: IdentifiableItem<T>) {
-        navigate(item)
+    func didSelect(_ item: IdentifiableItem<T>) {
+        didSelect(item)
     }
     
     func show(_ alert: UIAlertController) {

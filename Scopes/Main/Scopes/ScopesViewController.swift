@@ -40,7 +40,7 @@ extension ScopesViewController: ContentScreenManagerDelegate {
         cell.textLabel?.text = item.title
     }
     
-    func navigate(to item: IdentifiableItem<Scope>) {
+    func didSelect(_ item: IdentifiableItem<Scope>) {
         let goalsRepository = FirestoreGoalsRepository(parent: item)
         navigate(.from(.scopes(to: .goals(AnyRepository(goalsRepository)))))
     }
