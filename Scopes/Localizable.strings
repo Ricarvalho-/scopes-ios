@@ -6,19 +6,6 @@
   
 */
 
-"task.title.changestatus" = "Change task status";
-
-"task.message.currentstatus" = "Current status of \"%@\" is \"%@\"";
-
-"task.status.todo" = "To Do";
-"task.status.doing" = "Doing";
-"task.status.done" = "Done";
-
-"task.action.begin" = "Begin";
-"task.action.abort" = "Abort";
-"task.action.finish" = "Finish";
-"task.action.remake" = "Remake";
-
 "general.title.create" = "Create";
 "general.title.edit" = "Edit";
 "general.title.title" = "Title";
@@ -32,3 +19,16 @@
 "general.action.retry" = "Retry";
 "general.action.edit" = "Edit";
 "general.action.delete" = "Delete";
+
+"task.title.changestatus" = "Change task status";
+
+"task.message.currentstatus" = "Current status of \"%@\" is \"%@\"";
+
+"task.status.todo" = "To Do";
+"task.status.doing" = "Doing";
+"task.status.done" = "Done";
+
+"task.action.begin" = "Begin";
+"task.action.abort" = "Abort";
+"task.action.finish" = "Finish";
+"task.action.remake" = "Remake";

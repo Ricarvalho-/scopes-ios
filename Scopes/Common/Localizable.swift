@@ -24,6 +24,28 @@ private struct Localizer: Localizable {
 }
 
 enum Localized {
+    enum General {
+        enum Title {
+            static var create = Localizer.make("general.title.create")
+            static var edit = Localizer.make("general.title.edit")
+            static var title = Localizer.make("general.title.title")
+            static var error = Localizer.make("general.title.error")
+            static var delete = Localizer.make("general.title.delete")
+        }
+        
+        enum Message {
+            static var undoableAction = Localizer.make("general.message.undoableaction")
+        }
+        
+        enum Action {
+            static var cancel = Localizer.make("general.action.cancel")
+            static var ok = Localizer.make("general.action.ok")
+            static var retry = Localizer.make("general.action.retry")
+            static var edit = Localizer.make("general.action.edit")
+            static var delete = Localizer.make("general.action.delete")
+        }
+    }
+    
     enum Task {
         enum Title {
             static var changeStatus = Localizer.make("task.title.changestatus")
@@ -44,28 +66,6 @@ enum Localized {
             static var abort = Localizer.make("task.action.abort")
             static var finish = Localizer.make("task.action.finish")
             static var remake = Localizer.make("task.action.remake")
-        }
-    }
-    
-    enum General {
-        enum Title {
-            static var create = Localizer.make("general.title.create")
-            static var edit = Localizer.make("general.title.edit")
-            static var title = Localizer.make("general.title.title")
-            static var error = Localizer.make("general.title.error")
-            static var delete = Localizer.make("general.title.delete")
-        }
-        
-        enum Message {
-            static var undoableAction = Localizer.make("general.message.undoableaction")
-        }
-        
-        enum Action {
-            static var cancel = Localizer.make("general.action.cancel")
-            static var ok = Localizer.make("general.action.ok")
-            static var retry = Localizer.make("general.action.retry")
-            static var edit = Localizer.make("general.action.edit")
-            static var delete = Localizer.make("general.action.delete")
         }
     }
 }
