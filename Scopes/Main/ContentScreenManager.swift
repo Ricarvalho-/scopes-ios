@@ -156,6 +156,20 @@ class ContentScreenManager<T: Hashable>: NSObject, UITableViewDelegate {
             }
     }
     
+    func create(new item: T) {
+        repository.create(new: item)
+            .onSuccess { [weak self] createdItem in
+                guard let self = self else { return }
+                var snapshot = self.dataSource.snapshot()
+                snapshot.appendItems([createdItem].map(Item.item))
+                self.dataSource.apply(snapshot, animatingDifferences: true)
+            }.onFailure { [weak self] error in
+                self?.alert(error: error.localizedDescription) { [weak self] in
+                    self?.create(new: item)
+                }
+            }
+    }
+    
     private func alert(
         error message: String,
         retry handler: @escaping () -> Void
