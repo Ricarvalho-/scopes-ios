@@ -10,6 +10,10 @@ import UIKit
 typealias FieldSetup = (_ field: UITextField,
                         _ onUpdate: @escaping UIActionHandler) -> Void
 
+protocol FieldProvider {
+    var fieldSetup: FieldSetup { get }
+}
+
 class ContentScreenManager<T: Hashable>: NSObject, UITableViewDelegate {
     var delegate: AnyContentScreenManagerDelegate<T>? = nil
     
@@ -203,6 +207,24 @@ class ContentScreenManager<T: Hashable>: NSObject, UITableViewDelegate {
     }
     
     private enum NoFields: Hashable {}
+    
+    func askItemDetails<F: Hashable & FieldProvider>(
+        currentTitle: String? = nil,
+        additionalFields: [F] = [],
+        onCancel: (() -> Void)? = nil,
+        completion: @escaping (_ title: String,
+                               _ fieldValues: [F : String?]) -> Void
+    ) {
+        askItemDetails(
+            currentTitle: currentTitle,
+            additionalFields:
+                [F : FieldSetup]().merging(
+                    additionalFields.map { ($0, $0.fieldSetup) }
+                ) { (_, new) in new },
+            onCancel: onCancel,
+            completion: completion
+        )
+    }
     
     func askItemDetails<F: Hashable>(
         currentTitle: String? = nil,
