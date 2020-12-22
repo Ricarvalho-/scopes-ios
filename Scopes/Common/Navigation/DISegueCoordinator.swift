@@ -32,14 +32,14 @@ extension DISegueCoordinator {
             availableViewControllers.append(contentsOf: viewControllers)
         }
         
-        return availableViewControllers.compactMap({ $0 as? DITarget })
+        return availableViewControllers.compactMap { $0 as? DITarget }
     }
 }
 
 extension UIViewController: DISegueCoordinator {
     @objc dynamic private func swizzledPrepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let safeSegue = sender as? SafeDISegue {
-            possibleTargets(for: segue.destination).forEach() { target in
+            possibleTargets(for: segue.destination).forEach { target in
                 safeSegue.diContainer?.performInjection(into: target.field)
             }
         }

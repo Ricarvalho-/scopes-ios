@@ -62,7 +62,7 @@ extension TasksViewController: ContentScreenManagerDelegate {
                     self?.contentManager?.update(oldItem: item, with: task)
                 }
             )
-        }.forEach() {
+        }.forEach {
             actionChooser.addAction($0)
         }
         

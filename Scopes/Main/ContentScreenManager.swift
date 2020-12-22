@@ -95,9 +95,9 @@ class ContentScreenManager<T: Hashable>: NSObject, UITableViewDelegate {
         repository.obtain(
             first: 10,
             after: lastItem
-        ).onSuccess() { [weak self] (items, canLoadMore) in
+        ).onSuccess { [weak self] (items, canLoadMore) in
             self?.update(content: items, canLoadMore)
-        }.onFailure() { [weak self] error in
+        }.onFailure { [weak self] error in
             self?.update(showing: error)
         }
     }
