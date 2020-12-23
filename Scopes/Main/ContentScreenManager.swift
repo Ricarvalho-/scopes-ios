@@ -142,6 +142,10 @@ class ContentScreenManager<T: Hashable>: NSObject, UITableViewDelegate {
             path: oldItem.path,
             item: newItem
         )
+        guard updatedItem != oldItem else {
+            completion?(.success(()))
+            return
+        }
         repository.update(updatedItem)
             .onSuccess { [weak self] in
                 guard let self = self else { return }
