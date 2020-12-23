@@ -81,6 +81,15 @@ extension GoalsViewController.Field: FieldProvider {
         _ field: UITextField,
         _ onUpdate: @escaping UIActionHandler
     ) {
+        setupDueDate(field, onUpdate)
+    }
+    
+    
+    fileprivate func setupDueDate(
+        _ field: UITextField,
+        _ onUpdate: @escaping UIActionHandler,
+        _ currentDate: Date? = nil
+    ) {
         let datePicker = UIDatePicker()
         datePicker.preferredDatePickerStyle = .inline
         
@@ -104,6 +113,11 @@ extension GoalsViewController.Field: FieldProvider {
             UIAction(handler: updateFieldTextToPickerDate),
             for: .allTouchEvents
         )
+        
+        if let currentDate = currentDate {
+            datePicker.date = currentDate
+            field.text = GoalsViewController.dateFormatter.string(from: currentDate)
+        }
         
         field.inputView = datePicker
         field.placeholder = Localized.Goal.Field.dueDate.localized
