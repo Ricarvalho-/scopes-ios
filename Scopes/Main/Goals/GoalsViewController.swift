@@ -88,6 +88,7 @@ extension GoalsViewController.Field: FieldProvider {
             { [weak field, weak datePicker] (action: UIAction) in
                 guard let date = datePicker?.date else { return }
                 field?.text = GoalsViewController.dateFormatter.string(from: date)
+                field?.selectedTextRange = nil
                 onUpdate(action)
             }
         
@@ -98,6 +99,10 @@ extension GoalsViewController.Field: FieldProvider {
         field.addAction(
             UIAction(handler: updateFieldTextToPickerDate),
             for: .allEditingEvents
+        )
+        field.addAction(
+            UIAction(handler: updateFieldTextToPickerDate),
+            for: .allTouchEvents
         )
         
         field.inputView = datePicker
