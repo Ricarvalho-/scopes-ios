@@ -132,7 +132,11 @@ class ContentScreenManager<T: Hashable>: NSObject, UITableViewDelegate {
         dataSource.apply(snapshot, animatingDifferences: true)
     }
     
-    func update(oldItem: IdentifiableItem<T>, with newItem: T) {
+    func update(
+        oldItem: IdentifiableItem<T>,
+        with newItem: T,
+        completion: ((EmptyResult) -> Void)? = nil
+    ) {
         let updatedItem = IdentifiableItem(
             id: oldItem.id,
             path: oldItem.path,
@@ -149,8 +153,12 @@ class ContentScreenManager<T: Hashable>: NSObject, UITableViewDelegate {
                 )
                 snapshot.deleteItems([oldOne])
                 self.dataSource.apply(snapshot, animatingDifferences: true)
+                completion?(.success(()))
             }.onFailure { [weak self] error in
-                self?.alert(error: error.localizedDescription) { [weak self] in
+                self?.alert(
+                    error: error.localizedDescription,
+                    onCancel: { completion?(.failure(error)) }
+                ) { [weak self] in
                     self?.update(oldItem: oldItem, with: newItem)
                 }
             }
@@ -172,11 +180,13 @@ class ContentScreenManager<T: Hashable>: NSObject, UITableViewDelegate {
     
     private func alert(
         error message: String,
+        onCancel: (() -> Void)? = nil,
         retry handler: @escaping () -> Void
     ) {
         alert(title: Localized.General.Title.error.localized,
               message: message,
               actionTitle: Localized.General.Action.retry.localized,
+              onCancel: onCancel,
               actionHandler: handler)
     }
     
