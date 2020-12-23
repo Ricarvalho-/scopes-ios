@@ -410,20 +410,24 @@ protocol ContentScreenManagerDelegate: Alertable {
 }
 
 class AnyContentScreenManagerDelegate<T: Hashable>: ContentScreenManagerDelegate {
+    private let show: (UIAlertController) -> Void
     private let update: (UITableViewCell, T) -> Void
     private let didSelect: (IdentifiableItem<T>) -> Void
-    private let show: (UIAlertController) -> Void
     
     init<D: ContentScreenManagerDelegate>(_ delegate: D) where D.Item == T {
+        show = { [weak delegate] in
+            delegate?.show($0)
+        }
         update = { [weak delegate] in
             delegate?.update(cell: $0, for: $1)
         }
         didSelect = { [weak delegate] in
             delegate?.didSelect($0)
         }
-        show = { [weak delegate] in
-            delegate?.show($0)
-        }
+    }
+    
+    func show(_ alert: UIAlertController) {
+        show(alert)
     }
     
     func update(cell: UITableViewCell, for item: T) {
@@ -432,9 +436,5 @@ class AnyContentScreenManagerDelegate<T: Hashable>: ContentScreenManagerDelegate
     
     func didSelect(_ item: IdentifiableItem<T>) {
         didSelect(item)
-    }
-    
-    func show(_ alert: UIAlertController) {
-        show(alert)
     }
 }
