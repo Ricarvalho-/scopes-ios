@@ -68,6 +68,32 @@ extension GoalsViewController: ContentScreenManagerDelegate {
         let tasksRepository = FirestoreTasksRepository(parent: item)
         navigate(.from(.goals(to: .tasks(with: AnyRepository(tasksRepository)))))
     }
+    
+    func startEditing(
+        _ item: IdentifiableItem<Goal>,
+        onCancel: @escaping () -> Void,
+        completion: @escaping (EmptyResult) -> Void
+    ) {
+        contentManager?.askItemDetails(
+            currentTitle: item.item.title,
+            additionalFields: [
+                Field.dueDate : {
+                    Field.dueDate.setupDueDate($0, $1, item.item.dueDate)
+                }
+            ],
+            onCancel: onCancel
+        ) { [weak self] title, values in
+            guard let dueDateText = values[.dueDate] as? String,
+                  let dueDate = Self.dateFormatter.date(from: dueDateText)
+            else { return }
+            
+            self?.contentManager?.update(
+                oldItem: item,
+                with: Goal(title: title, dueDate: dueDate),
+                completion: completion
+            )
+        }
+    }
 }
 
 extension GoalsViewController.Field: FieldProvider {

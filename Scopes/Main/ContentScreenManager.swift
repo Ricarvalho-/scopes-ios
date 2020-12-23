@@ -359,6 +359,32 @@ class ContentScreenManager<T: Hashable>: NSObject, UITableViewDelegate {
     
     func tableView(
         _ tableView: UITableView,
+        leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath
+    ) -> UISwipeActionsConfiguration? {
+        switch dataSource.itemIdentifier(for: indexPath) {
+        case .item(let item):
+            return UISwipeActionsConfiguration(
+                actions: [UIContextualAction(
+                    style: .normal,
+                    title: Localized.General.Action.edit.localized
+                ) { [weak self] _, _, completed in
+                    self?.delegate?.startEditing(
+                        item,
+                        onCancel: { completed(false) }
+                    ) { result in
+                        switch result {
+                        case .success(_): completed(true)
+                        case .failure(_): completed(false)
+                        }
+                    }
+                }]
+            )
+        default: return nil
+        }
+    }
+    
+    func tableView(
+        _ tableView: UITableView,
         trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath
     ) -> UISwipeActionsConfiguration? {
         switch dataSource.itemIdentifier(for: indexPath) {
@@ -421,12 +447,20 @@ protocol ContentScreenManagerDelegate: Alertable {
     
     func update(cell: UITableViewCell, for item: Item)
     func didSelect(_ item: IdentifiableItem<Item>)
+    func startEditing(
+        _ item: IdentifiableItem<Item>,
+        onCancel: @escaping () -> Void,
+        completion: @escaping (EmptyResult) -> Void
+    )
 }
 
 class AnyContentScreenManagerDelegate<T: Hashable>: ContentScreenManagerDelegate {
     private let show: (UIAlertController) -> Void
     private let update: (UITableViewCell, T) -> Void
     private let didSelect: (IdentifiableItem<T>) -> Void
+    private let startEditing: (IdentifiableItem<T>,
+                               @escaping () -> Void,
+                               @escaping (EmptyResult) -> Void) -> Void
     
     init<D: ContentScreenManagerDelegate>(_ delegate: D) where D.Item == T {
         show = { [weak delegate] in
@@ -437,6 +471,9 @@ class AnyContentScreenManagerDelegate<T: Hashable>: ContentScreenManagerDelegate
         }
         didSelect = { [weak delegate] in
             delegate?.didSelect($0)
+        }
+        startEditing = { [weak delegate] in
+            delegate?.startEditing($0, onCancel: $1, completion: $2)
         }
     }
     
@@ -450,5 +487,13 @@ class AnyContentScreenManagerDelegate<T: Hashable>: ContentScreenManagerDelegate
     
     func didSelect(_ item: IdentifiableItem<T>) {
         didSelect(item)
+    }
+    
+    func startEditing(
+        _ item: IdentifiableItem<Item>,
+        onCancel: @escaping () -> Void,
+        completion: @escaping (EmptyResult) -> Void
+    ) {
+        startEditing(item, onCancel, completion)
     }
 }

@@ -80,4 +80,21 @@ extension TasksViewController: ContentScreenManagerDelegate {
         
         present(actionChooser, animated: true)
     }
+    
+    func startEditing(
+        _ item: IdentifiableItem<Task>,
+        onCancel: @escaping () -> Void,
+        completion: @escaping (EmptyResult) -> Void
+    ) {
+        contentManager?.askItemTitle(
+            currentTitle: item.item.title,
+            onCancel: onCancel
+        ) { [weak self] title in
+            self?.contentManager?.update(
+                oldItem: item,
+                with: Task(title: title, status: item.item.status),
+                completion: completion
+            )
+        }
+    }
 }

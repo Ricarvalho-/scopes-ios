@@ -50,4 +50,21 @@ extension ScopesViewController: ContentScreenManagerDelegate {
         let goalsRepository = FirestoreGoalsRepository(parent: item)
         navigate(.from(.scopes(to: .goals(with: AnyRepository(goalsRepository)))))
     }
+    
+    func startEditing(
+        _ item: IdentifiableItem<Scope>,
+        onCancel: @escaping () -> Void,
+        completion: @escaping (EmptyResult) -> Void
+    ) {
+        contentManager?.askItemTitle(
+            currentTitle: item.item.title,
+            onCancel: onCancel
+        ) { [weak self] title in
+            self?.contentManager?.update(
+                oldItem: item,
+                with: Scope(title: title),
+                completion: completion
+            )
+        }
+    }
 }
